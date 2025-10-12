@@ -1,5 +1,5 @@
 #### general settings
-name: HDRUNet_tanh_l1_bs_16_ps_160
+name: HDRUNet_UAV_2
 model: condition
 use_tb_logger: true
 distortion: sr
@@ -11,9 +11,9 @@ datasets:
   train:
     name: Single_LDR2HDR
     mode: LQGT_condition
-    dataroot_LQ: /data0/NTIRE2021_HDR/000_Train_SingleFrame_FirstStage/medium_sub
-    dataroot_GT: /data0/NTIRE2021_HDR/000_Train_SingleFrame_FirstStage/gt_sub
-    dataroot_ratio: /data0/NTIRE2021_HDR/000_Train_SingleFrame_FirstStage/alignratio
+    dataroot_LQ: ../datasets/train/LQ_sub
+    dataroot_GT: ../datasets/train/GT_sub
+    dataroot_ratio: ../datasets/train/ratio
     use_shuffle: true
     n_workers: 8
     batch_size: 16
@@ -24,9 +24,9 @@ datasets:
   val:
     name: Single_LDR2HDR
     mode: LQGT_condition
-    dataroot_LQ: /data0/NTIRE2021_HDR/000_Valid_SingleFrame_FirstStage/medium
-    dataroot_GT: /data0/NTIRE2021_HDR/000_Valid_SingleFrame_FirstStage/gt
-    dataroot_ratio: /data0/NTIRE2021_HDR/000_Valid_SingleFrame_FirstStage/alignratio
+    dataroot_LQ: ../datasets/test/LQ
+    dataroot_GT: ../datasets/test/GT
+    dataroot_ratio: ../datasets/test/ratio
     condition: image
 
 #### network structures
@@ -40,8 +40,8 @@ network_G:
 #### path
 path:
   root: ./
-  # pretrain_model_G: ../experiments/...
-  strict_load: false
+  pretrain_model_G: ../pretrained_models/pretrained_model.pth
+  strict_load: true
   # resume_state: ../experiments/...
 
 #### training settings: learning rate scheme, loss
@@ -50,7 +50,7 @@ train:
   lr_scheme: MultiStepLR # MultiStepLR | CosineAnnealingLR_Restart
   beta1: 0.9
   beta2: 0.99
-  niter: 1000000 # 600000 
+  niter:  1000000 # 600000 
   warmup_iter: -1  # no warm up
 
   lr_scheme: MultiStepLR

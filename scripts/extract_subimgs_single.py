@@ -10,8 +10,8 @@ from progress_bar import ProgressBar
 
 def main():
     """A multii-thread tool to crop sub imags."""
-    input_folder = './dataset/medium'
-    save_folder = './dataset/medium_sub'
+    input_folder = '../dataset/train/LQ'
+    save_folder = '../dataset/train/LQ_sub'
 
     n_thread = 20
     crop_sz = 480   # crop size

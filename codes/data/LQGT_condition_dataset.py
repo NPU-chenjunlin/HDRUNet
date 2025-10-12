@@ -36,6 +36,8 @@ class LQGT_dataset(data.Dataset):
         # get GT image
         GT_path = self.paths_GT[index]
         img_GT = util.read_imgdata(GT_path, ratio=alignratio)
+        # 归一化到 [0,1]
+        img_GT = img_GT / 255.0
 
         if self.opt['phase'] == 'train':
             

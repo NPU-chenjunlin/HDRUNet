@@ -1,14 +1,14 @@
-name: HDRUNet_tanh_l1_bs_16_ps_160
+name: HDRUNet_UAV
 model: condition
 distortion: sr
 scale: 1
-gpu_ids: [0]
+gpu_ids: [2]
 
 datasets:
   test_1:  # the 1st test dataset
-    name: 000_Valid_SingleFrame_FirstStage
+    name: latest_G
     mode: LQ_condition
-    dataroot_LQ: /data0/NTIRE2021_HDR/000_Valid_SingleFrame_FirstStage/medium
+    dataroot_LQ: ../datasets/test/LQ
     condition: image
     
 #### network structures
@@ -22,5 +22,5 @@ network_G:
 #### path
 path:
   root: ./
-  # pretrain_model_G: ../experiments/HDRUNet_tanh_l1_bs_16_ps_160/models/latest_G.pth
-  pretrain_model_G: ../pretrained_models/pretrained_model.pth
+  pretrain_model_G: ../pretrained_models/latest_G.pth
+  # pretrain_model_G: ../pretrained_models/pretrained_model.pth
