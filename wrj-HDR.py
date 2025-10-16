@@ -177,7 +177,7 @@ def unsupported_media_type_error(error):
     }), 415
 
 
-@app.route('/process', methods=['POST'])
+@app.route('/wrj_HDR', methods=['POST'])
 def process():
     """API接口处理函数"""
     try:
